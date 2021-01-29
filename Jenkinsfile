@@ -24,7 +24,7 @@ node{
             props = readProperties  file: """deploy.properties"""
 	    echo 'wwww 333'
 		workspace = pwd ()
-            echo 'wwww wsp'
+            echo 'wwww wsp = ' + workspace
 	   echo workspace
 			branchName='master' //sh(returnStdout: true, script: 'git symbolic-ref --short HEAD').trim()
 			commit_username=sh(returnStdout: true, script: '''username=$(git log -1 --pretty=%ae) 
