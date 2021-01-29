@@ -67,9 +67,12 @@ node{
      try{
 			sh """echo ${workspace}"""
 			def scannerHome = tool 'sonar-runner';
+	     echo 'wwwww444'
 			withSonarQubeEnv('Dockersonar') 
 			{
+				echo 'wwww555'
 				staticCodeAnalysis(scannerHome, """${Dockersonar}""")
+				echo 'www666'
 			}
         }
     	catch (e) {
