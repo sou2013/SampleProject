@@ -18,10 +18,14 @@ node{
     {
         try
         {
+	    echo 'wwww starting...'
             checkout scm
+	    echo 'wwww 222'
             props = readProperties  file: """deploy.properties"""
+	    echo 'wwww 333'
 		workspace = pwd ()
-	    echo workspace
+            echo 'wwww wsp'
+	   echo workspace
 			branchName=sh(returnStdout: true, script: 'git symbolic-ref --short HEAD').trim()
 			commit_username=sh(returnStdout: true, script: '''username=$(git log -1 --pretty=%ae) 
 																echo ${username%@*} ''').trim();
