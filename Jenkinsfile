@@ -88,7 +88,7 @@ node{
     { 
 		try
 		{
-			sh """mvn clean build"""
+			sh """/usr/local/bin/maven363/bin/mvn clean build"""
 		}
 		catch (e) 
 		{
@@ -102,7 +102,7 @@ node{
     stage ('Unit Test Execution')
     { 
       try {
-            sh """mvn clean test"""
+            sh """/usr/local/bin/maven363/bin/mvn clean test"""
         }
     	catch (e) {
     		currentBuild.result='FAILURE'
@@ -111,7 +111,7 @@ node{
     		throw e
     	}
     }
-
+/*
     stage ('Code Coverage')
     { 
      try
@@ -129,11 +129,12 @@ node{
     		throw e
     	}
     }
+    */
     stage ('Create Docker Image')
     { 
         try {
 				imageName="""${props['docker.registry']}/${props['deploy.app']}:${props['api.version']}"""
-                sh """mvn package
+                sh """/usr/local/bin/maven363/bin/mvn package
 				sudo docker build -t ${imageName} ."""
         }
     	catch (e) {
