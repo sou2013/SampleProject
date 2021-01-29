@@ -238,7 +238,7 @@ def logJIRATicket(String buildStatus, String buildFailedAt, String projectid, St
 						assignee: [name: assignTo],
 						reporter: [name: issueReporter]]]
 		def Issues = [issueUpdates: [Issue]]
-		response = jiraNewIssues issues: Issues
+		response = "fake jira response" // jiraNewIssues issues: Issues
 		echo """${response}"""
 	}
 	}
