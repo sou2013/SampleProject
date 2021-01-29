@@ -62,6 +62,7 @@ node{
     		throw e
     	}
     }
+	/*
     stage ('Static Code Analysis')
     { 
      try{
@@ -82,6 +83,7 @@ node{
     		throw e
     	}
      }
+     */
     stage ('Build')
     { 
 		try
@@ -91,7 +93,7 @@ node{
 		catch (e) 
 		{
     		currentBuild.result='FAILURE'
-    	//	logJIRATicket(currentBuild.result,  "At Stage Build", props['JIRAprojectid'], props['JIRAissuetype'], commit_Email, props['JIRAissuereporter'])
+    		logJIRATicket(currentBuild.result,  "At Stage Build", props['JIRAprojectid'], props['JIRAissuetype'], commit_Email, props['JIRAissuereporter'])
     		notifyBuild(currentBuild.result, "At Stage Build", "", commit_Email)
     		throw e
     	}
