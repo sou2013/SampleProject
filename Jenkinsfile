@@ -3,7 +3,7 @@ Deployment environment can be anything like Docker, kubernetes or cloud.
 Create 'deploy.properties' file at same location and save all the build and deployment properties. This file will be refered by this pipeline for build and deployment. */
 def workspace;
 def props='';
-def tagName="""${JOB_NAME}-${BUILD_TIMESTAMP}"""
+def tagName="1.0.0";
 def branchName;
 def commit_username;
 def commit_Email;
