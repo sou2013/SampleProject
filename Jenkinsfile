@@ -238,6 +238,8 @@ def notifyBuild(String buildStatus, String buildFailedAt, String bodyDetails, St
 }
 def logJIRATicket(String buildStatus, String buildFailedAt, String projectid, String issuetype, String assignTo, String issueReporter) 
 {
+	echo 'build failed at '
+	echo buildFailedAt
 	buildStatus = buildStatus ?: 'SUCCESS'
 	if (buildStatus == 'FAILURE' ){
 	String Title="""${buildStatus} ${buildFailedAt} OF ${JOB_NAME}[${BUILD_NUMBER}]"""
