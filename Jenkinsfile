@@ -88,7 +88,7 @@ node{
     { 
 		try
 		{
-			sh """/usr/local/bin/maven363/bin/mvn clean build"""
+			sh """/usr/local/bin/maven363/bin/mvn clean package"""
 		}
 		catch (e) 
 		{
