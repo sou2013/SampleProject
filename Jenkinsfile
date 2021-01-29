@@ -1,6 +1,9 @@
 /* This script will provide basic idea to create jenkins file and deploy application on deployment environment.
 Deployment environment can be anything like Docker, kubernetes or cloud.
 Create 'deploy.properties' file at same location and save all the build and deployment properties. This file will be refered by this pipeline for build and deployment. */
+
+// this is a scripted pipeline, not declarative.  Declarative starts with pipeline {}
+
 def workspace;
 def props='';
 def tagName="1.0.0";
@@ -17,15 +20,17 @@ node{
         {
             checkout scm
             props = readProperties  file: """deploy.properties"""
-			workspace = pwd ()
+		workspace = pwd ()
+	    echo workspace
 			branchName=sh(returnStdout: true, script: 'git symbolic-ref --short HEAD').trim()
 			commit_username=sh(returnStdout: true, script: '''username=$(git log -1 --pretty=%ae) 
 																echo ${username%@*} ''').trim();
 			commit_Email=sh(returnStdout: true, script: '''Email=$(git log -1 --pretty=%ae) 
 																echo $Email''').trim(); 
-			echo commit_username
-			echo commit_Email
-			echo branchName
+	    echo commit_username
+	    echo commit_Email
+	    echo branchName
+	    echo workspace
         }
     	catch (e) {
     		currentBuild.result='FAILURE'
