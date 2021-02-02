@@ -133,9 +133,9 @@ node{
     stage ('Create Docker Image')
     { 
         try {
-				imageName="""${props['docker.registry']}/${props['deploy.app']}:${props['api.version']}"""
-                sh """/usr/local/bin/maven363/bin/mvn package
-				sudo docker build -t ${imageName} ."""
+		//		imageName="""${props['docker.registry']}/${props['deploy.app']}:${props['api.version']}"""
+                imageName="helloSprnigBoot"
+		sh "sudo docker build -t ${imageName} ."
         }
     	catch (e) {
     		currentBuild.result='FAILURE'
@@ -144,6 +144,7 @@ node{
     		throw e
     	}
     }
+	/*
     stage ('Push Image to Docker Registry')
     { 
        try {
@@ -157,6 +158,8 @@ node{
     		throw e
     	}
     }
+    
+	
     stage ('Deploy to Environment')
     { 
         try 
@@ -183,6 +186,7 @@ node{
     		throw e
     	}
     }
+    */
 	stage ('Validate Microservice Deployment')
     { 
         try {
